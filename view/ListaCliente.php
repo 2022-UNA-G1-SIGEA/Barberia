@@ -86,7 +86,7 @@
                 if (isset($_GET['update'])) {
 
                     $id = $_GET['update'];
-                    $cliente1 = $clienteBusiness->getOneCliente($id);
+                    $clienteUpdate = $clienteBusiness->getOneCliente($id);
                 } else if (isset($_GET['delete'])) {
 
                     $idcliente = $_GET['delete'];
@@ -96,6 +96,7 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $id = $_POST['idcliente'] ?? '';
+                    
                     $cliente = new Cliente($_POST);
                     if ($id == '') {
                         $clienteBusiness->insertCliente($cliente);
@@ -137,28 +138,28 @@
         </div>
 
 
-        <input id="idcliente" type="hidden" class="form-input" name="idcliente" value="<?php if (!empty($cliente1)) {
+        <input id="idcliente" type="hidden" class="form-input" name="idcliente" value="<?php if (!empty($clienteUpdate)) {
                                                                                             echo $cliente['tbclienteid'];
                                                                                         } ?>">
 
         <label for="nombre" class="form-label">Nombre</label>
-        <input id="nombre" type="text" class="form-input" placeholder="Escriba el nombre" name="nombre" value="<?php if (!empty($cliente1)) {
+        <input id="nombre" type="text" class="form-input" placeholder="Escriba el nombre" name="nombre" value="<?php if (!empty($clienteUpdate)) {
                                                                                                                     echo $cliente['tbclientenombre'];
                                                                                                                 } ?>">
 
         <label for="apellido" class="form-label">Apellido</label>
-        <input id="apellido" type="text" class="form-input" placeholder="Escriba el apellido" name="apellido" value="<?php if (!empty($cliente1)) {
+        <input id="apellido" type="text" class="form-input" placeholder="Escriba el apellido" name="apellido" value="<?php if (!empty($clienteUpdate)) {
                                                                                                                             echo $cliente['tbclienteapellido'];
                                                                                                                         } ?>">
 
         <label for="telefono" class="form-label">Telefono</label>
-        <input id="telefono" type="number" class="form-input" placeholder="Escriba el telefono" name="numeroTelefono" value="<?php if (!empty($cliente1)) {
+        <input id="telefono" type="number" class="form-input" placeholder="Escriba el telefono" name="numeroTelefono" value="<?php if (!empty($clienteUpdate)) {
                                                                                                                                     echo $cliente['tbclientetelefono'];
                                                                                                                                 } ?>">
 
 
         <label for="correo" class="form-label">Correo</label>
-        <input id="correo" type="email" class="form-input" placeholder="Escriba el correo" name="correo" value="<?php if (!empty($cliente1)) {
+        <input id="correo" type="email" class="form-input" placeholder="Escriba el correo" name="correo" value="<?php if (!empty($clienteUpdate)) {
                                                                                                                     echo $cliente['tbclientecorreo'];
                                                                                                                 } ?>">
 
